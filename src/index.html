@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SunMao Frontend Release Test</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="card">
+      <span class="badge">SunMao CI/CD</span>
+      <h1>sunmao-test-frontend</h1>
+      <p class="subtitle">用于验证前端构建产物在服务器、容器与 Kubernetes 上的发布流程。</p>
+      <dl class="meta">
+        <div>
+          <dt>版本</dt>
+          <dd id="app-version">__APP_VERSION__</dd>
+        </div>
+        <div>
+          <dt>构建时间</dt>
+          <dd id="build-time">__BUILD_TIME__</dd>
+        </div>
+        <div>
+          <dt>健康检查</dt>
+          <dd id="health-status">待检测</dd>
+        </div>
+      </dl>
+      <button id="check-btn" type="button">检测 /healthz</button>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

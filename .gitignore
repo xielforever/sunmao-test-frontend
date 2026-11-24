@@ -1,0 +1,7 @@
+node_modules/
+dist/
+frontend-dist.tar.gz
+.vite/
+.env
+.env.*
+*.log

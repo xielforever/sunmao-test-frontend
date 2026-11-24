@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: sunmao-samples
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sunmao-test-frontend
+  namespace: sunmao-samples
+  labels:
+    app: sunmao-test-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sunmao-test-frontend
+  template:
+    metadata:
+      labels:
+        app: sunmao-test-frontend
+    spec:
+      containers:
+        - name: app
+          image: swr.cn-east-2.myhuaweicloud.com/dx_x2era/sunmao-test-frontend:latest
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 80
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sunmao-test-frontend
+  namespace: sunmao-samples
+spec:
+  selector:
+    app: sunmao-test-frontend
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80

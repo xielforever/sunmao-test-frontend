@@ -1,0 +1,10 @@
+{
+  "name": "sunmao-test-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Frontend release-test project for SunMao CI/CD",
+  "scripts": {
+    "build": "node build.js",
+    "test": "node test.js"
+  }
+}
